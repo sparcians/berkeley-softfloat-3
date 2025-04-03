@@ -62,6 +62,7 @@ float16_t f16_roundToInt( float16_t a, uint_fast8_t roundingMode, bool exact )
         uiZ = uiA & packToF16UI( 1, 0, 0 );
         switch ( roundingMode ) {
          case softfloat_round_near_even:
+#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
             if ( !fracF16UI( uiA ) ) break;
          case softfloat_round_near_maxMag:
             if ( exp == 0xE ) uiZ |= packToF16UI( 0, 0xF, 0 );
