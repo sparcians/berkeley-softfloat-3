@@ -61,9 +61,9 @@ float16_t f16_roundToInt( float16_t a, uint_fast8_t roundingMode, bool exact )
         if ( exact ) softfloat_exceptionFlags |= softfloat_flag_inexact;
         uiZ = uiA & packToF16UI( 1, 0, 0 );
         switch ( roundingMode ) {
-#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
          case softfloat_round_near_even:
             if ( !fracF16UI( uiA ) ) break;
+            __attribute__ ((fallthrough));
          case softfloat_round_near_maxMag:
             if ( exp == 0xE ) uiZ |= packToF16UI( 0, 0xF, 0 );
             break;
