@@ -62,8 +62,8 @@ float16_t f16_roundToInt( float16_t a, uint_fast8_t roundingMode, bool exact )
         uiZ = uiA & packToF16UI( 1, 0, 0 );
         switch ( roundingMode ) {
          case softfloat_round_near_even:
-            if ( !fracF16UI( uiA ) ) break;
-            __attribute__ ((fallthrough));
+            if ( fracF16UI( uiA ) ) uiZ |= packToF16UI( 0, 0xF, 0 );
+            break;
          case softfloat_round_near_maxMag:
             if ( exp == 0xE ) uiZ |= packToF16UI( 0, 0xF, 0 );
             break;
