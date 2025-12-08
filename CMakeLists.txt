@@ -9,7 +9,7 @@ include_directories("${SOURCE_DIR}/${SPECIALIZE_TYPE}")
 include_directories("${SOURCE_DIR}/include")
 include_directories("build/Linux-RISCV64-GCC")
 
-set(CMAKE_C_FLAGS "-c -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 ${SOFTFLOAT_OPTS} ${C_INCLUDES} -O2")
+set(CMAKE_C_FLAGS "-fPIC -c -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 ${SOFTFLOAT_OPTS} ${C_INCLUDES} -O2")
 
 add_subdirectory(${SOURCE_DIR})
 add_subdirectory(${SOURCE_DIR}/${SPECIALIZE_TYPE})
